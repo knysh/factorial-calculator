@@ -4,8 +4,8 @@
 
 Run tests by following command: 
 
-- runs all tests on all browsers
-```yarn test```
+- runs API tests
+```yarn test-api```
 - runs all tests only on chrome browser
 ```yarn test-chrome```
 - runs all tests only on firefox browser

@@ -1,0 +1,1 @@
+export const FACTORIAL_PATH = '/factorial';
