@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
 
   fullyParallel: true,
   retries: 0,
-  workers: 2,
+  workers: 4,
   reporter: [
     ['list'],
     ['allure-playwright', {
@@ -38,6 +38,12 @@ const config: PlaywrightTestConfig = {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
+      },
+    },
+
+    {
+      name: 'api',
+      use: {
       },
     },
   ],
