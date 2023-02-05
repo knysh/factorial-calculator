@@ -13,9 +13,8 @@ const config: PlaywrightTestConfig = {
   workers: 2,
   reporter: [
     ['list'],
-    ['html', { open: 'never' }],
     ['allure-playwright', {
-      detail: false,
+      detail: true,
       suiteTitle: false,
     },]
   ],
