@@ -7,12 +7,16 @@
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.30.0",
-    "allure-playwright": "^2.0.0-beta.25"
+    "@types/node": "^18.11.19",
+    "allure-playwright": "^2.0.0-beta.25",
+    "typescript": "^4.9.5"
   },
   "scripts": {
+    "playwright-install": "npx playwright install",
     "test-api": "npx playwright test tests/api --project api",
-    "test-chrome": "npx playwright test tests/ui --project chromium",
-    "test-firefox": "npx playwright test tests/ui --project firefox",
+    "test-chrome": "yarn playwright-install && npx playwright test tests/ui --project chromium",
+    "test-firefox": "yarn playwright-install && npx playwright test tests/ui --project firefox",
     "allure-report": "allure generate allure-results -o allure-report --clean && allure open allure-report"
-  }
+  },
+  "dependencies": {}
 }

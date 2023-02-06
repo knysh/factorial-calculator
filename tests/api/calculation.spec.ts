@@ -1,3 +1,4 @@
+import { allure } from 'allure-playwright';
 import { getFactorial } from './../../clients/factorialClient';
 import { test, expect } from '@playwright/test';
 
@@ -36,6 +37,10 @@ test.describe('Factorial calculation', () => {
   test.describe('Invalid values', () => {
     for (const invalidValue of invalidValues) {
       test(`Value: ${invalidValue}`, async ({ request }) => {
+        allure.issue({
+          url: 'none',
+          name: 'Expected 400 Bad request if provided parameter is invalid'
+        });
         const factorialResult = await getFactorial(request, invalidValue);
         expect(factorialResult.status()).toEqual(400);
       });
