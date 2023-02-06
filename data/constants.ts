@@ -1,6 +1,5 @@
-export const getResultTemplate = (value: string, expectedResult: string): string => {
-    return `The factorial of ${value} is: ${expectedResult}`;
-};
+export const getResultTemplate = (value: string, expectedResult: string): string =>
+    `The factorial of ${value} is: ${expectedResult}`;
 
 export const INTEGER_ERROR_MESSAGE: string = 'Please enter an integer';
 export const SERVER_ERROR_MESSAGE: string = 'Oops, smth went wrong, please try again';

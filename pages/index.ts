@@ -1,0 +1,1 @@
+export { FactorialCalcPage } from './factorialCalc.page';

@@ -1,0 +1,1 @@
+export { getFactorial } from './factorialClient';

@@ -1,0 +1,1 @@
+export { mockGetFactorialWith400Error, mockGetFactorialWith500Error } from './factorial.mocks';

@@ -1,42 +1,31 @@
 import { allure } from 'allure-playwright';
-import { getFactorial } from './../../clients/factorialClient';
 import { test, expect } from '@playwright/test';
+import { getFactorial } from '../../clients';
 
 const validData = [
-  {
-    value: 0,
-    expectedResult: 1,
-  }, {
-    value: 1,
-    expectedResult: 1,
-  }, {
-    value: 170,
-    expectedResult: 7.257415615307999e+306,
-  }, {
-    value: 991,
-    expectedResult: Infinity,
-  }
+  { value: 0, expectedResult: 1, },
+  { value: 1, expectedResult: 1, },
+  { value: 170, expectedResult: 7.257415615307999e+306, },
+  { value: 991, expectedResult: Infinity, }
 ];
 
 const invalidValues = [992, -1, 1.2];
 
 test.describe('Factorial calculation', () => {
   test.describe('Valid values', () => {
-    for (const validValues of validData) {
-      test(`Value: '${validValues.value}'`, async ({ request }) => {
-        const factorialResult = await getFactorial(request, validValues.value);
+    validData.forEach(({ value, expectedResult }) => {
+      test(`Factorial of '${value}' should return '${expectedResult}'`, async ({ request }) => {
+        const factorialResult = await getFactorial(request, value);
 
         expect(factorialResult.ok()).toBeTruthy();
-        expect(await factorialResult.json()).toEqual({
-          answer: validValues.expectedResult
-        });
+        expect(await factorialResult.json()).toEqual({ answer: expectedResult });
       });
-    }
+    });
   });
 
   test.describe('Invalid values', () => {
-    for (const invalidValue of invalidValues) {
-      test(`Value: ${invalidValue}`, async ({ request }) => {
+    invalidValues.forEach(invalidValue => {
+      test(`Factorial of '${invalidValue}' should return 400 Bad request`, async ({ request }) => {
         allure.issue({
           url: 'none',
           name: 'Expected 400 Bad request if provided parameter is invalid'
@@ -44,6 +33,6 @@ test.describe('Factorial calculation', () => {
         const factorialResult = await getFactorial(request, invalidValue);
         expect(factorialResult.status()).toEqual(400);
       });
-    }
+    });
   });
 });

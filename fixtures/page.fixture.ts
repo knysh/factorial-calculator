@@ -1,6 +1,6 @@
-import { FactorialCalcPage } from './../pages/factorialCalc.page';
 import { test as baseTest } from '@playwright/test';
 import * as fs from 'fs';
+import { FactorialCalcPage } from '../pages';
 
 type MyFixtures = {
   openPage: void;
