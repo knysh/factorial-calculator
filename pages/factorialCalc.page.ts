@@ -18,7 +18,6 @@ export class FactorialCalcPage {
 
     async getResult(): Promise<string | null> {
         await this.resultLabel.waitFor({ state: 'visible' });
-        await expect(this.resultLabel).toBeVisible();
         return this.resultLabel.textContent();
     }
 }
