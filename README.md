@@ -16,4 +16,3 @@ Run tests by following command:
 ### Reports
 ##### Allure report
 Could be opened by command: ```yarn allure-report```.
-> Note: allure should be [preinstalled](https://docs.qameta.io/allure/#_installing_a_commandline).
