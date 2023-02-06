@@ -20,10 +20,11 @@ export const test = baseTest.extend<MyFixtures>({
   saveLogs: [async ({ page }, use, testInfo) => {
     await use();
 
-    const pageSource = await page.content();
-    const screenshot = await page.screenshot();
     if (testInfo.status !== testInfo.expectedStatus) {
+      const pageSource = await page.content();
+      const screenshot = await page.screenshot();
       const logFile = testInfo.outputPath('pageSource.txt');
+
       await fs.promises.writeFile(logFile, pageSource, 'utf8');
       testInfo.attachments.push({ name: 'logs', contentType: 'text/plain', path: logFile });
       await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
