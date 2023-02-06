@@ -21,9 +21,4 @@ export class FactorialCalcPage {
         await expect(this.resultLabel).toBeVisible();
         return this.resultLabel.textContent();
     }
-
-    async getNumberBorderColor(): Promise<string> {
-        return this.numberInput.evaluate(el =>
-            window.getComputedStyle(el).getPropertyValue('border'));
-    }
 }
