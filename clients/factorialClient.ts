@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { FACTORIAL_PATH } from './../data/path';
+import { FACTORIAL_PATH } from '../data';
 
 type GetFactorialFn = (request: APIRequestContext, number: number) => Promise<APIResponse>
 
