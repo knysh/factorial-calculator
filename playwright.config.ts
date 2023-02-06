@@ -4,10 +4,7 @@ import { devices } from '@playwright/test';
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   timeout: 600 * 1000,
-  expect: {
-    timeout: 5000
-  },
-
+  expect: { timeout: 5000 },
   fullyParallel: true,
   retries: 0,
   workers: 4,
@@ -20,34 +17,25 @@ const config: PlaywrightTestConfig = {
   ],
   use: {
     baseURL: 'https://qainterview.pythonanywhere.com',
-    headless: false,
+    headless: true,
     navigationTimeout: 30 * 1000,
     actionTimeout: 5000,
     trace: 'on-first-retry',
   },
-
   projects: [
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
+      use: { ...devices['Desktop Chrome'] },
     },
-
     {
       name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
+      use: { ...devices['Desktop Firefox'] },
     },
-
     {
       name: 'api',
-      use: {
-      },
+      use: {},
     },
   ],
-
   outputDir: 'test-results/',
 };
 

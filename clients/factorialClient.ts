@@ -1,7 +1,9 @@
+import { APIRequestContext, APIResponse } from '@playwright/test';
 import { FACTORIAL_PATH } from './../data/path';
-import { APIRequestContext, APIResponse } from "playwright-core";
 
-export const getFactorial = async (request: APIRequestContext, number: number): Promise<APIResponse> => {
+type GetFactorialFn = (request: APIRequestContext, number: number) => Promise<APIResponse>
+
+export const getFactorial: GetFactorialFn = async (request, number) => {
     return request.post(FACTORIAL_PATH, {
         data: `number=${number}`,
         headers: {
