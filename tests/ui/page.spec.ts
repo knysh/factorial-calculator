@@ -6,7 +6,7 @@ test('Page has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Factoriall/);
 });
 
-test.only('Error integer indication', async ({ factorialCalcPage }) => {
+test('Error integer indication', async ({ factorialCalcPage }) => {
   expect(await factorialCalcPage.getNumberBorderColor()).not.toContain(RED_COLOR);
   await factorialCalcPage.calculateFactorial('test');
   const result = await factorialCalcPage.getResult();

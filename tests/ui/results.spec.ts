@@ -4,6 +4,7 @@ import { expect } from '@playwright/test';
 import { getResultTemplate } from '../../data/constants';
 import { test } from '../../fixtures/page.fixture';
 import { mockGetFactorialWith500Error } from '../../utils/mockUtil';
+import { allure } from 'allure-playwright';
 
 const data = [
   {
@@ -47,6 +48,11 @@ test.describe('Result of factorial calculation', () => {
 });
 
 test('Server error test', async ({ page, factorialCalcPage }) => {
+  allure.issue({
+    url: 'none',
+    name: 'Nothing happened if server error'
+  });
+
   await mockGetFactorialWith500Error(page);
   await factorialCalcPage.calculateFactorial('1');
   const actualResult = await factorialCalcPage.getResult();
@@ -54,6 +60,11 @@ test('Server error test', async ({ page, factorialCalcPage }) => {
 });
 
 test('Bad request error test', async ({ page, factorialCalcPage }) => {
+  allure.issue({
+    url: 'none',
+    name: 'Nothing happened if request error'
+  });
+
   await mockGetFactorialWith400Error(page);
   await factorialCalcPage.calculateFactorial('-1');
   const actualResult = await factorialCalcPage.getResult();
